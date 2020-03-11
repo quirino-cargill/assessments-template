@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Assessment Documentation
 
-## Available Scripts
+The main goal of this assessment is to create a React Application using TypeScript in order to show a list of commodities fetched through a provided REST api, and allow the user to search and filter through the fetched commodities. 
 
-In the project directory, you can run:
+## Instructions
 
-### `yarn start`
+Fork the current repository and start the skeleton executing the following scripts:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```s
+yarn install
+yarn start 
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The application provides a basic setup using **Create React App** with a typescript template. 
 
-### `yarn test`
+The description of the API is available [here](./API.md)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requirements
 
-### `yarn build`
+During the implementation, you must accomplish the following functional and technical requirements
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tech Requirements
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. You must use Hooks and Functional Components
+2. You must use TypeScript for typing your methods, your components and the data structure associated to the Commodotiy entity
+3. You must not use any third party JavaScript utility libraries 
+4. You can use any style approach you prefer (CSS, CSS Preprocessors, Styled Components, etc.) 
+5. You can use any library you like for fetching the data (also the builtin fetch would be totally fine)
+6. You can use any testing library for unit testing some of your code (Jest is already setup in the project and ready to be executed through the command `yarn test`)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Functional Requirements
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Create a List Component which shows a list of commodities
+2. Create a Commodity Component which shows a single commodity item
+3. Create a Search Component which allows to filter out the displayed commodities
+4. Create a Filter Component which allows to filter the displayed commodities by the available stock exchanges
+5. Add tests associated to the filter logic
+6. Add styles for displaying the items in a user friendly way
