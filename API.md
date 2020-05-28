@@ -1,23 +1,41 @@
 # API Info
 
-The API for fetching the list of commodities is available performing a GET request to the following endpoint:
+Use [Alpha Vantage](https://www.alphavantage.co/) APIs for retrieving market data. 
 
-```
-https://financialmodelingprep.com/api/v3/symbol/available-commodities
-```
+For further information, you can access the official documentation [here](https://www.alphavantage.co/documentation/)
 
-The Commodities data structure is represented by the following sample:
+Use the following as API key as query parameter for authentication, or register for getting your own API Key:
+ 
+`UBOB63ZQCT15M41X`
 
-```json
-{
-  symbol: "PLUSD", 
-  name: "Platinum Apr 20", 
-  currency: "USD", 
-  stockExchange: "NY Mercantile", 
-  exchangeShortName: "COMMODITY"
-}
-```
+For the current assessment you need to interact with the two following endpoints exposed by alpha vantage. 
 
-The data is available without any CORS issue and without any authentication required.
+## Symbol Information
 
-If for any reason you want to consult the API official documentation, it is avaialable [here](https://financialmodelingprep.com/developer/docs/#Most-of-the-Major-Commodities-(Gold,-Silver,-Oil))
+This endpoint returns the information associated to the provided symbol.
+
+**Endpoint**: 
+
+`https://www.alphavantage.co/query?function=SYMBOL_SEARCH`
+
+**Query Parameters**:
+
+| Name       |      Description      |  Type  |
+|------------|:---------------------:|-------:|
+| *keywords* |  The Symbol to lookup | string |
+
+## Daily Time Series
+
+This endpoint returns the daily time series of the specified symbol 
+
+This endpoint returns the information associated to the provided symbol.
+
+**Endpoint**: 
+
+`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED`
+
+**Query Parameters**:
+
+| Name       |      Description      |  Type  |
+|------------|:---------------------:|-------:|
+| *symbol*   |  The equity Symbol    | string |
