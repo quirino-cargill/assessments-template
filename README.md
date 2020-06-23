@@ -22,7 +22,7 @@ During the implementation, you must accomplish the following functional and tech
 ### Tech Requirements
 
 1. You must use Hooks and Functional Components
-2. You must use TypeScript for typing your methods, your components and the data structures associated (Symbol and Daily Prices)
+2. You must use TypeScript for typing your methods, your components and the data structures associated
 3. You must not use any third party JavaScript utility libraries 
 4. You can use any style approach you prefer (CSS, CSS Preprocessors, Styled Components, etc.) 
 5. You can use any library you like for fetching the data (also the builtin fetch would be totally fine)
