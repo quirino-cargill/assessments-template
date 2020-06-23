@@ -1,6 +1,6 @@
 # Assessment Documentation
 
-The main goal of this assessment is to create a React Application using TypeScript in order to show some financial market data associated to a list of stocks fetched through a provided REST api, and allow the user to search and filter through the fetched commodities, and check out some analytics associated to the fetched data 
+The main goal of this assessment is to create a React Application using TypeScript in order to show a list of countries, and then showing for each country the data associated to it.  
 
 ## Instructions
 
@@ -13,7 +13,7 @@ yarn start
 
 The application provides a basic setup using **Create React App** with a typescript template. 
 
-The description of the API is available [here](./API.md)
+The description of the API is available [here](https://restcountries.eu/?ref=public-apis)
 
 ## Requirements
 
@@ -30,19 +30,17 @@ During the implementation, you must accomplish the following functional and tech
 
 ### Functional Requirements
 
-1. Use as default preset of equities at least the following symbols: *IBM, AMZN, AAPL, AMD, GOOG, NFLX, FB, TSLA*
+1. Show a main page with the list of countries, allowing filtering and sorting (asc/desc) by the population of the capital city of the country 
    
-2. Show the list the equities with the following information:
-   1. Symbol
-   2. Associated Name (fetch the name from the APIs, do not hardcode it)
-   3. Last Day Market Movement as percentage (show if it was a positive or negative change)
+2. Selecting a country, show the following information of the country:
+   1. Capital City with the related info
+   2. Language
+   3. Currency
 
-3. Provide a way to filter out equities by name or symbol
+3. Provide a way to filter out countries by name or code
    
-4. Provide a way to sort equities by the last day market change value as percentage
+4. Provide a way to sort countries (asc/desc) by the population of its capital city 
    
-5. Selecting a value from the list, show its prices in the past days fetched through the APis, highlighting if it was a positive/negative day
-    
-6.  Add tests associated to the filter and sorting features
+5.  Add tests associated to the filter and sorting features
    
-7.  Add styles for displaying the items in a user friendly way
+6.  Add styles for displaying the items in a user friendly way
