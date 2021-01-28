@@ -1,4 +1,7 @@
-import IBaseApi from "../types/interfaces/IBaseApi";
+import Country from "../types/models/country";
+import ICountryService from "./iCountryService";
+
+let countries: Country[] = [];
 
 const get = async (): Promise<any> => {
     return await fetch(
@@ -9,7 +12,8 @@ const get = async (): Promise<any> => {
     )
     .then(async (response) => {
         if (response.ok) {
-            return await response.json();
+            countries = await response.json();
+            return countries;
         } else {
             console.log(`${response.status} response in CountryService.get() - Unable to get Countries`);
         }
@@ -19,8 +23,20 @@ const get = async (): Promise<any> => {
     });
 }
 
-module.exports = (): IBaseApi => {
+const sortData = (prop: keyof Country, asc: boolean = true): Country[] => {
+    return countries.sort((a: Country, b: Country) => {
+        switch (asc) {
+            case true:
+                return a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? ((a.name > b.name) ? 1 : -1) : -1;
+            case false:
+                return a[prop] < b[prop] ? 1 : a[prop] === b[prop] ? ((a.name < b.name) ? 1 : -1) : -1;
+        }
+    })
+}
+
+module.exports = (): ICountryService => {
     return {
-        get: get
+        get: get,
+        sortData: sortData
     }
 }
