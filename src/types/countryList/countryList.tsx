@@ -3,6 +3,7 @@ import React from "react";
 import Country from "../models/country";
 import CountryListItem from "./countryListItem";
 import GridHeader from "../grid/gridHeader";
+import DataGridHeader from "../models/dataGridHeader";
 
 const displayCountries = (countries: Country[]) => {
     return countries && Object.entries(countries).map(c => {
@@ -13,7 +14,7 @@ const displayCountries = (countries: Country[]) => {
 }
 
 const CountryList = (props: any) => {
-    const headers = [
+    const headers: DataGridHeader[] = [
         {
             name: "Country"
         },
