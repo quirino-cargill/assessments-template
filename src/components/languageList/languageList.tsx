@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./languageList.css";
 
@@ -6,7 +6,11 @@ import Language from "../../types/models/language";
 import LanguageListItem from "./languageListItem";
 
 const LanguageList = (props: any) => {
-    const [languages] = useState<Language[]>(props.language);
+    const [languages, setLanguages] = useState<Language[]>();
+
+    useEffect(() => {
+        setLanguages(props.languages);
+    }, [props]);
 
     return (
         <div className="languageListContainer">

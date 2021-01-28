@@ -1,17 +1,32 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import "./countryDetail.css";
 
 import LanguageList from "../languageList/languageList";
 import CurrencyList from "../currencyList/currencyList";
+import Country from "../../types/models/country";
+import Language from "../../types/models/language";
+import Currency from "../../types/models/currency";
 
 const CountryDetail= (props: any) => {
+    const [country, setCountry] = useState<Country>();
+    const [languages, setLanguages] = useState<Language>()
+    const [currencies, setCurrencies] = useState<Currency>()
+
+    useEffect(() => {
+        setCountry(props.country);
+        if (props.country) {
+            setLanguages(props.country.languages);
+            setCurrencies(props.country.currencies);
+        }
+    }, [props]);
+
     return (
         <div className="countryDetailContainer">
             {props.country && (
                 <div className="countryDetail">
                     <div className="countryDetail__header">
-                        {props.country.name}
+                        {country?.name}
                     </div>
                     <div className="countryDetail__container">
                         <div className="countryDetail__itemContainer">
@@ -19,7 +34,7 @@ const CountryDetail= (props: any) => {
                                 Capital:
                             </div>
                             <div className="countryDetailItem__info">
-                                {props.country.capital}
+                                {country?.capital}
                             </div>
                         </div>
                         <div className="countryDetail__itemContainer">
@@ -27,7 +42,7 @@ const CountryDetail= (props: any) => {
                                 Population:
                             </div>
                             <div className="countryDetailItem__info">
-                                {props.country.population}
+                                {country?.population}
                             </div>
                         </div>
                         <div className="countryDetail__itemContainer">
@@ -35,7 +50,7 @@ const CountryDetail= (props: any) => {
                                 Languages:
                             </div>
                             <div className="countryDetailItem__info">
-                                <div><LanguageList language={props.country.languages} /></div>
+                                <div><LanguageList languages={languages} /></div>
                             </div>
                         </div>
                         <div className="countryDetail__itemContainer">
@@ -43,7 +58,7 @@ const CountryDetail= (props: any) => {
                                 Currencies:
                             </div>
                             <div className="countryDetailItem__info">
-                                <div><CurrencyList currency={props.country.currencies} /></div>
+                                <div><CurrencyList currencies={currencies} /></div>
                             </div>
                         </div>
                     </div>

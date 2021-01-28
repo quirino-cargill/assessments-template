@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const CountryListItem= (props: any) => {
     return (
-        <div className="data-row">
+        <div className="data-row" onClick={() => props.onRowSelected(props.country)}>
             <div className="data-column">
                 {props.country.name}
             </div>

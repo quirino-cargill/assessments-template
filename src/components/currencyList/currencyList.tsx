@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./currencyList.css";
 
@@ -6,7 +6,11 @@ import Currency from "../../types/models/currency";
 import CurrencyListItem from "./currencyListItem";
 
 const CurrencyList = (props: any) => {
-    const [currencies] = useState<Currency[]>(props.currency);
+    const [currencies, setCurrencies] = useState<Currency[]>();
+
+    useEffect(() => {
+        setCurrencies(props.currencies);
+    }, [props]);
 
     return (
         <div className="currencyListContainer">

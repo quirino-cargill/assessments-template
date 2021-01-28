@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import Currency from "../../types/models/currency";
 
 const CurrencyListItem = (props: any) => {
-    const [currency, setCurrency] = useState<Currency>(props.currency);
+    const [currency, setCurrency] = useState<Currency>();
 
     useEffect(() => {
         setCurrency(props.currency);
-    },[props.currency]);
+    },[props]);
 
     return (
         <div className="currencyList__container">

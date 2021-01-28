@@ -44,6 +44,7 @@ const sortByOptions: DropdownListItem[] = [
 const CountriesPage = () => {
     const [countries, setCountries] = useState<Country[]>([]);
     const [sortBy, setSortBy] = useState<SortBy>();
+    const [selectedCountry, setSelectedCountry] = useState<Country>();
 
     useEffect(() => {
         fetch(
@@ -63,6 +64,10 @@ const CountriesPage = () => {
         });
 
     }, [sortBy]);
+
+    const handleCountrySelected = (country: Country) => {
+        setSelectedCountry(country);
+    }
 
     const handleSort = (itemSelected: DropdownListItem) => {
         switch (itemSelected.key) {
@@ -104,11 +109,11 @@ const CountriesPage = () => {
                         <div className="country-filter">FILTER</div>
                         <Dropdown title="Sort" list={sortByOptions} onItemSelected={handleSort} class="country-sortby"/>
                     </div>
-                    <CountryList countries={countries}/>
+                    <CountryList countries={countries} onRowSelected={handleCountrySelected} />
                 </div>
                 <div className="flex-spacer"></div>
                 <div className="country-detail">
-                    <CountryDetail country={countries && countries[0]} />
+                    <CountryDetail country={selectedCountry} />
                 </div>
             </div>
         </div>

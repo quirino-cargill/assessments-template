@@ -5,10 +5,10 @@ import CountryListItem from "./countryListItem";
 import GridHeader from "../grid/gridHeader";
 import DataGridHeader from "../../types/models/dataGridHeader";
 
-const displayCountries = (countries: Country[]) => {
-    return countries && Object.entries(countries).map(c => {
+const displayCountries = (props: any) => {
+    return props.countries && Object.entries(props.countries).map(c => {
         return (
-            <CountryListItem key={c[0]} country={c[1]} />
+            <CountryListItem key={c[0]} country={c[1]} onRowSelected={props.onRowSelected}/>
         );
     });
 }
@@ -25,7 +25,7 @@ const CountryList = (props: any) => {
     return (
         <div className="data-grid">
             <GridHeader headers={headers} />
-            { displayCountries(props.countries) }
+            { displayCountries(props) }
         </div>
     )
 }
