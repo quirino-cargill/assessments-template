@@ -1,7 +1,7 @@
 import React from "react"
 
 const CountryListItem= (props: any) => {
-    return <div>Country List Item</div>;
+    return <div>{props.country.name}</div>;
 }
 
 export default CountryListItem;
