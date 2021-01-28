@@ -5,7 +5,7 @@ let countries: Country[] = [];
 
 const get = async (): Promise<any> => {
     return await fetch(
-        'https://restcountries.eu/rest/v2/all',
+        'https://restcountries.eu/rest/v2/all?fields=name;capital;population;currencies;languages;alpha2Code;alpha3Code;numericCode',
         {
             method: "GET"
         }
