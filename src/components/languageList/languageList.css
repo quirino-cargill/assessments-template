@@ -1,0 +1,29 @@
+.languageList__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+.languageList__item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.languageList__itemHeader {
+    font-size: 1em;
+}
+
+.languageList__itemContainer {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+}
+.languageListItem__label {
+    display: flex;
+    flex: 0 1 30%;
+    font-size: .9em;
+    font-weight: bold;
+    justify-content: flex-end;
+}

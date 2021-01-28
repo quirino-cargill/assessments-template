@@ -2,6 +2,8 @@ import React from "react"
 
 import "./countryDetail.css";
 
+import LanguageList from "../languageList/languageList";
+
 const CountryDetail= (props: any) => {
     return (
         <div className="countryDetailContainer">
@@ -32,7 +34,7 @@ const CountryDetail= (props: any) => {
                                 Languages:
                             </div>
                             <div className="countryDetailItem__info">
-                                <div>LANGUAGE COMPONENT</div>
+                                <div><LanguageList language={props.country.languages} /></div>
                             </div>
                         </div>
                         <div className="countryDetail__itemContainer">
