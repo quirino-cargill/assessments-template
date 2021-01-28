@@ -1,0 +1,52 @@
+
+.data-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-grid .data-row:nth-child(even) {
+    background-color: #ededed;
+}
+
+.data-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-header-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.data-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.data-header-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.country-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.country-list {
+    display: flex;
+    flex: 1 1 50%;
+    flex-direction: column;
+}
+
+.country-detail {
+    display: flex;
+    flex: 1 1 30%;
+    flex-direction: column;
+}

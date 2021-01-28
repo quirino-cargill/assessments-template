@@ -20,7 +20,12 @@ const CountriesPage = () => {
     return (
         <div>
             <h1>Countries</h1>
-            <CountryList countries={countries}/>
+            <div className="country-container">
+                <div className="country-list">
+                    <CountryList countries={countries}/>
+                </div>
+                <div className="country-detail"></div>
+            </div>
         </div>
     )
 }

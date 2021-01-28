@@ -2,16 +2,28 @@ import React from "react";
 
 import Country from "../models/country";
 import CountryListItem from "./countryListItem";
+import GridHeader from "../grid/gridHeader";
 
 const displayCountries = (countries: Country[]) => {
     return countries && Object.entries(countries).map(c => {
-        return <CountryListItem key={c[0]} country={c[1]} />;
+        return (
+            <CountryListItem key={c[0]} country={c[1]} />
+        );
     });
 }
 
 const CountryList = (props: any) => {
+    const headers = [
+        {
+            name: "Country"
+        },
+        {
+            name: "Population"
+        }
+    ];
     return (
-        <div className="country-list">
+        <div className="data-grid">
+            <GridHeader headers={headers} />
             { displayCountries(props.countries) }
         </div>
     )
