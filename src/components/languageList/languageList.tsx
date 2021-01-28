@@ -12,8 +12,8 @@ const LanguageList = (props: any) => {
         <div className="languageListContainer">
             {languages && (
                 <div className="languageListItemContainer">
-                    {languages.map((language: Language) => (
-                        <LanguageListItem language={language} />
+                    {languages.map((language: Language, index: number) => (
+                        <LanguageListItem language={language} key={index}/>
                     ))}
                 </div>
             )}

@@ -3,6 +3,7 @@ import React from "react"
 import "./countryDetail.css";
 
 import LanguageList from "../languageList/languageList";
+import CurrencyList from "../currencyList/currencyList";
 
 const CountryDetail= (props: any) => {
     return (
@@ -42,7 +43,7 @@ const CountryDetail= (props: any) => {
                                 Currencies:
                             </div>
                             <div className="countryDetailItem__info">
-                                <div>CURRENCY COMPONENT</div>
+                                <div><CurrencyList currency={props.country.currencies} /></div>
                             </div>
                         </div>
                     </div>
