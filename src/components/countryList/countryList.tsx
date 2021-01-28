@@ -1,9 +1,9 @@
 import React from "react";
 
-import Country from "../models/country";
+import Country from "../../types/models/country";
 import CountryListItem from "./countryListItem";
 import GridHeader from "../grid/gridHeader";
-import DataGridHeader from "../models/dataGridHeader";
+import DataGridHeader from "../../types/models/dataGridHeader";
 
 const displayCountries = (countries: Country[]) => {
     return countries && Object.entries(countries).map(c => {

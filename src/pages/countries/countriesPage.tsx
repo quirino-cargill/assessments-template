@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import CountryList from "../types/countryList/countryList";
-import Country from "../types/models/country";
-import Dropdown from "../components/dropdown";
-import DropdownListItem from "../types/models/dropdownListItem";
-import SortBy from "../types/models/sortBy";
+import CountryList from "../../components/countryList/countryList";
+import Country from "../../types/models/country";
+import Dropdown from "../../components/dropdown/dropdown";
+import DropdownListItem from "../../types/models/dropdownListItem";
+import SortBy from "../../types/models/sortBy";
 
-const countryService = require("../services/countryService")();
+import "./countriesPage.css";
+
+const countryService = require("../../services/countryService")();
 
 const sortByOptions: DropdownListItem[] = [
     {
@@ -89,7 +91,10 @@ const CountriesPage = () => {
             <h1>Countries</h1>
             <div className="country-container">
                 <div className="country-list">
-                    <Dropdown title="Sort" list={sortByOptions} onItemSelected={handleSort}/>
+                    <div className="country-data-options">
+                        <div className="country-filter">FILTER</div>
+                        <Dropdown title="Sort" list={sortByOptions} onItemSelected={handleSort} class="country-sortby"/>
+                    </div>
                     <CountryList countries={countries}/>
                 </div>
                 <div className="country-detail"></div>

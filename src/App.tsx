@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CountriesPage from './pages/countriesPage';
+import CountriesPage from './pages/countries/countriesPage';
 import HomePage from "./pages/homePage";
 
 import "./styles.css";

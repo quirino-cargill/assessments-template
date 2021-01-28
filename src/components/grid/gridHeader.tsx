@@ -1,6 +1,6 @@
 import React from "react";
 
-import DataGridHeader from "../models/dataGridHeader";
+import DataGridHeader from "../../types/models/dataGridHeader";
 
 const displayHeaders = (headers: DataGridHeader[]) => {
     return headers && Object.entries(headers).map(h => {

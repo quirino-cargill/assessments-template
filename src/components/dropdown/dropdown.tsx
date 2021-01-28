@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import DropdownListItem from "../types/models/dropdownListItem";
+import DropdownListItem from "../../types/models/dropdownListItem";
+
+import "./dropdown.css";
 
 const Dropdown = (props: any) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -23,10 +25,11 @@ const Dropdown = (props: any) => {
     }
 
     return (
-        <div className="dropdown-container">
+        <div className={props.class}>
             <button type="button" className="dropdown-button" onClick={toggleDropdown}>
                 <div className="dropdown-button-label">{title}</div>
-                {isDropdownOpen ? "-" : "+"}
+                <div className="flex-spacer"></div>
+                <div className="dropdown-sort-icon">{isDropdownOpen ? " -" : " +"}</div>
             </button>
             {isDropdownOpen && (
                 <div className="dropdown-list">
