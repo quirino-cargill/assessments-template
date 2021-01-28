@@ -1,0 +1,36 @@
+.countryDetail {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.countryDetail__header {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.countryDetail__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 1.5em;
+    margin-left: 15px;
+}
+
+.countryDetail__itemContainer {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    padding: 5px 0;
+}
+
+.countryDetailItem__label {
+    display: flex;
+    flex: 0 1 30%;
+    font-weight: bold;
+    justify-content: flex-end;
+}
+
+.countryDetailItem__info {
+    margin-left: 15px;
+}

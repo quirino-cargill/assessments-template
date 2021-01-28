@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import CountryDetail from "../../components/countryList/countryDetail";
 import CountryList from "../../components/countryList/countryList";
 import Country from "../../types/models/country";
 import Dropdown from "../../components/dropdown/dropdown";
@@ -7,6 +8,7 @@ import DropdownListItem from "../../types/models/dropdownListItem";
 import SortBy from "../../types/models/sortBy";
 
 import "./countriesPage.css";
+
 
 const countryService = require("../../services/countryService")();
 
@@ -97,7 +99,10 @@ const CountriesPage = () => {
                     </div>
                     <CountryList countries={countries}/>
                 </div>
-                <div className="country-detail"></div>
+                <div className="flex-spacer"></div>
+                <div className="country-detail">
+                    <CountryDetail country={countries && countries[0]} />
+                </div>
             </div>
         </div>
     )
