@@ -26,6 +26,10 @@ const get = async (): Promise<any> => {
     });
 }
 
+const set = (data: Country[]) => {
+    countries = data;
+}
+
 const sortData = (prop: keyof Country, asc: boolean = true): Country[] => {
     return countries.sort((a: Country, b: Country) => {
         switch (asc) {
@@ -41,6 +45,7 @@ const sortData = (prop: keyof Country, asc: boolean = true): Country[] => {
 module.exports = (): ICountryService => {
     return {
         get: get,
+        set: set,
         sortData: sortData
     }
 }

@@ -46,16 +46,23 @@ const CountriesPage = () => {
     const [sortBy, setSortBy] = useState<SortBy>();
 
     useEffect(() => {
-        const fetchCountries = async () => {
-            let countries = await countryService.get();
+        fetch(
+            'https://restcountries.eu/rest/v2/all?fields=name;capital;population;currencies;languages;alpha2Code;alpha3Code;numericCode',
+            {
+                method: "GET"
+            }
+        )
+        .then(res => res.json())
+        .then(response => {
+            let countries: Country[] = response;
+            countryService.set(countries);
             if (sortBy) {
                 countries = countryService.sortData(sortBy.key, sortBy.ascending);
             }
-            setCountries(countries);
-        }
+            setCountries(countries)
+        });
 
-        fetchCountries();
-    });
+    }, [sortBy]);
 
     const handleSort = (itemSelected: DropdownListItem) => {
         switch (itemSelected.key) {
