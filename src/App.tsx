@@ -1,7 +1,19 @@
 import React from 'react';
 
-function App() {
-  return <div>Insert your code here...</div>;
+import CountriesPage from './pages/countriesPage';
+import HomePage from "./pages/homePage";
+
+const displayPage = () => {
+    switch (window.location.pathname) {
+        case '/countries':
+            return <CountriesPage />;
+        default:
+            return <HomePage />;
+    }
+}
+
+const App = () => {
+  return <div>{displayPage()}</div>;
 }
 
 export default App;
