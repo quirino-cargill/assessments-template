@@ -1,6 +1,5 @@
 import React from "react";
 
-import Country from "../../types/models/country";
 import CountryListItem from "./countryListItem";
 import GridHeader from "../grid/gridHeader";
 import DataGridHeader from "../../types/models/dataGridHeader";

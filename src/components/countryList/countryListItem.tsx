@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react"
 
-const CountryListItem= (props: any) => {
+import Country from "../../types/models/country";
+
+const CountryListItem = (props: any) => {
+    const [country, setCountry] = useState<Country>();
+
+    useEffect(() => {
+        setCountry(props.country);
+    }, [props]);
+
     return (
         <div className="data-row" onClick={() => props.onRowSelected(props.country)}>
             <div className="data-column">
-                {props.country.name}
+                {country?.name}
             </div>
             <div className="data-column">
-                {props.country.population}
+                {country?.population}
             </div>
         </div>
     );

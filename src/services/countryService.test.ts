@@ -10,14 +10,17 @@ beforeAll(() => {
             json: () => {
                 return Promise.resolve([
                     {
+                        alpha2Code: 'US',
                         name: 'United States',
                         population: 234567
                     },
                     {
+                        alpha2Code: 'FR',
                         name: 'France',
                         population: 1234
                     },
                     {
+                        alpha2Code: 'CA',
                         name: 'Canada',
                         population: 123456
                     }
@@ -28,6 +31,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
+    countryService.clearFiltered();
 });
 
 afterEach(() => {
@@ -91,6 +95,48 @@ describe('CountryService', () => {
             expect(countries[0].name).toEqual('United States');
             expect(countries[1].name).toEqual('France');
             expect(countries[2].name).toEqual('Canada');
+
+            done();
+        });
+    });
+
+    describe('searchData(text, type)', () => {
+        it('Should search countries by name for text', async (done) => {
+            let countries = await countryService.get();
+
+            countries = countryService.searchData('France', 'name');
+            expect(countries.length).toEqual(1);
+            expect(countries[0].name).toEqual('France');
+
+            done();
+        });
+
+        it('Should search countries by name for text case-insensitive', async (done) => {
+            let countries = await countryService.get();
+
+            countries = countryService.searchData('cana', 'name');
+            expect(countries.length).toEqual(1);
+            expect(countries[0].name).toEqual('Canada');
+
+            done();
+        });
+
+        it('Should search countries by code for text', async (done) => {
+            let countries = await countryService.get();
+
+            countries = countryService.searchData('US', 'code');
+            expect(countries.length).toEqual(1);
+            expect(countries[0].name).toEqual('United States');
+
+            done();
+        });
+
+        it('Should search countries by code for text case-insensitive', async (done) => {
+            let countries = await countryService.get();
+
+            countries = countryService.searchData('ca', 'code');
+            expect(countries.length).toEqual(1);
+            expect(countries[0].name).toEqual('Canada');
 
             done();
         });

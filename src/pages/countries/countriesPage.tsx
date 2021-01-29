@@ -8,6 +8,7 @@ import DropdownListItem from "../../types/models/dropdownListItem";
 import SortBy from "../../types/models/sortBy";
 
 import "./countriesPage.css";
+import Search from "../../components/search/search";
 
 
 const countryService = require("../../services/countryService")();
@@ -45,6 +46,8 @@ const CountriesPage = () => {
     const [countries, setCountries] = useState<Country[]>([]);
     const [sortBy, setSortBy] = useState<SortBy>();
     const [selectedCountry, setSelectedCountry] = useState<Country>();
+    const [searchText, setSearchText] = useState<string>();
+    const [searchType, setSearchType] = useState<string>();
 
     useEffect(() => {
         fetch(
@@ -57,17 +60,38 @@ const CountriesPage = () => {
         .then(response => {
             let countries: Country[] = response;
             countryService.set(countries);
+            if (searchText) {
+                countries = countryService.searchData(searchText, searchType);
+            }
             if (sortBy) {
                 countries = countryService.sortData(sortBy.key, sortBy.ascending);
             }
             setCountries(countries)
         });
 
-    }, [sortBy]);
+    }, [sortBy, searchText, searchType]);
+
+    const handleCodeSearch = (e: any) => {
+        const searchText = e.target.value;
+        setSearchType('code');
+        if (searchText.length === 2) {
+            setSearchText(searchText);
+        }
+
+    }
 
     const handleCountrySelected = (country: Country) => {
         setSelectedCountry(country);
     }
+
+    const handleNameSearch = (e: any) => {
+        const searchText = e.target.value;
+        setSearchType('name');
+        if (searchText.length === 2) {
+            setSearchText(searchText);
+        }
+    }
+
 
     const handleSort = (itemSelected: DropdownListItem) => {
         switch (itemSelected.key) {
@@ -106,7 +130,10 @@ const CountriesPage = () => {
             <div className="country-container">
                 <div className="country-list">
                     <div className="country-data-options">
-                        <div className="country-filter">FILTER</div>
+                        <div className="country-filter">
+                            <Search useLabel="true" placeholder="by name" onSearch={handleNameSearch} />
+                            <Search useLabel="false" placeholder="by code" onSearch={handleCodeSearch} maxLength="2" />
+                        </div>
                         <Dropdown title="Sort" list={sortByOptions} onItemSelected={handleSort} class="country-sortby"/>
                     </div>
                     <CountryList countries={countries} onRowSelected={handleCountrySelected} />
