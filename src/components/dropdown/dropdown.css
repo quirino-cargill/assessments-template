@@ -1,0 +1,16 @@
+.dropdown-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown-sort-icon {
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 10px;
+    float: right;
+}
+
+.dropdown-list {
+    display: flex;
+    flex-direction: column;
+}

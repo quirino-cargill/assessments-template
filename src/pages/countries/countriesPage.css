@@ -1,0 +1,26 @@
+.country-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.country-list {
+    display: flex;
+    flex: 1 1 50%;
+    flex-direction: column;
+}
+
+.country-detail {
+    display: flex;
+    flex: 1 1 30%;
+    flex-direction: column;
+}
+
+.country-filter {
+    display:flex;
+    flex-direction: row;
+    float: left;
+}
+
+.country-sortby {
+    float: right;
+}

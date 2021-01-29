@@ -1,0 +1,29 @@
+.currencyList__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+.currencyList__item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.currencyList__itemHeader {
+    font-size: 1em;
+}
+
+.currencyList__itemContainer {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+}
+.currencyListItem__label {
+    display: flex;
+    flex: 0 1 30%;
+    font-size: .9em;
+    font-weight: bold;
+    justify-content: flex-end;
+}
