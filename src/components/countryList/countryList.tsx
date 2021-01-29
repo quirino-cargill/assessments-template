@@ -18,6 +18,9 @@ const CountryList = (props: any) => {
             name: "Country"
         },
         {
+            name: "Code"
+        },
+        {
             name: "Population"
         }
     ];

@@ -10,11 +10,25 @@ const Dropdown = (props: any) => {
     const [list, setList] = useState<DropdownListItem[]>([]);
 
     useEffect(() => {
-        setTitle(props.title);
+        if (title === "") {
+            setTitle(props.title);
+        }
         setList(props.list);
     },[props]);
 
+    const initializeTitle = () => {
+        if (props.selected && props.updateTitleOnSelected) {
+            const item = props.list.find((li: DropdownListItem) => li.key === props.selected);
+            setTitle(item?.name || props.title);
+        } else if (title === "") {
+            setTitle(props.title);
+        }
+    }
+
     const onItemSelected = (item: DropdownListItem) => {
+        if (props.updateTitleOnSelected) {
+            setTitle(item.name);
+        }
         props.onItemSelected(item);
         // Close the dropdown
         toggleDropdown();

@@ -1,9 +1,6 @@
 .dropdown-button {
-    font-weight: bold;
-    font-size: 1.2em;
     display: flex;
     flex-direction: row;
-    width: 200px;
 }
 
 .dropdown-sort-icon {

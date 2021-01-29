@@ -15,6 +15,9 @@ const CountryListItem = (props: any) => {
                 {country?.name}
             </div>
             <div className="data-column">
+                {country?.alpha2Code}
+            </div>
+            <div className="data-column">
                 {country?.population}
             </div>
         </div>

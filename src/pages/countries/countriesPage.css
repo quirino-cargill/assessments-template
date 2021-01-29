@@ -16,6 +16,8 @@
 }
 
 .country-filter {
+    display:flex;
+    flex-direction: row;
     float: left;
 }
 

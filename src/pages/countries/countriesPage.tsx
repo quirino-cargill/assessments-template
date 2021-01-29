@@ -13,6 +13,19 @@ import Search from "../../components/search/search";
 
 const countryService = require("../../services/countryService")();
 
+const searchByOptions: DropdownListItem[] = [
+    {
+        name: "By Country Name",
+        key: "name",
+        id: "0"
+    },
+    {
+        name: "By Country Code",
+        key: "alpha2Code",
+        id: "1"
+    }
+];
+
 const sortByOptions: DropdownListItem[] = [
     {
         name: "Country (ASC)",
@@ -33,13 +46,7 @@ const sortByOptions: DropdownListItem[] = [
         name: "Population (high-low)",
         key: "population-descending",
         id: "3"
-    },
-    {
-        name: "Clear",
-        key: "clear",
-        id: "4"
     }
-
 ];
 
 const CountriesPage = () => {
@@ -71,27 +78,26 @@ const CountriesPage = () => {
 
     }, [sortBy, searchText, searchType]);
 
-    const handleCodeSearch = (e: any) => {
-        const searchText = e.target.value;
-        setSearchType('code');
-        if (searchText.length === 2) {
-            setSearchText(searchText);
-        }
-
-    }
-
     const handleCountrySelected = (country: Country) => {
         setSelectedCountry(country);
     }
 
-    const handleNameSearch = (e: any) => {
+    const handleSearch = (e: any) => {
+        let doSearch = true;
         const searchText = e.target.value;
-        setSearchType('name');
-        if (searchText.length === 2) {
+        if (searchType === 'alpha2Code' && searchText.length !== 2) {
+            doSearch = false;
+        }
+
+        if (doSearch) {
             setSearchText(searchText);
         }
+
     }
 
+    const handleSearchType = (itemSelected: DropdownListItem) => {
+        setSearchType(itemSelected.key);
+    }
 
     const handleSort = (itemSelected: DropdownListItem) => {
         switch (itemSelected.key) {
@@ -131,10 +137,23 @@ const CountriesPage = () => {
                 <div className="country-list">
                     <div className="country-data-options">
                         <div className="country-filter">
-                            <Search useLabel="true" placeholder="by name" onSearch={handleNameSearch} />
-                            <Search useLabel="false" placeholder="by code" onSearch={handleCodeSearch} maxLength="2" />
+                            <Search useLabel="true" placeholder="" onSearch={handleSearch} />
+                            <Dropdown
+                                title="By Country Name"
+                                list={searchByOptions}
+                                onItemSelected={handleSearchType}
+                                class="country-searchBy"
+                                selected={searchType}
+                                updateTitleOnSelected={true}
+                            />
                         </div>
-                        <Dropdown title="Sort" list={sortByOptions} onItemSelected={handleSort} class="country-sortby"/>
+                        <Dropdown
+                            title="Sort"
+                            list={sortByOptions}
+                            onItemSelected={handleSort}
+                            class="country-sortby"
+                            updateTitleOnSelected={true}
+                        />
                     </div>
                     <CountryList countries={countries} onRowSelected={handleCountrySelected} />
                 </div>
